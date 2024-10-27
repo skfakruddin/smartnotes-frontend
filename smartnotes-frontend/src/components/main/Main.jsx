@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import Pen from '../../assets/pen.svg';
 import Notes from '../../assets/noteslogo.svg';
 import '../main/Main.css';

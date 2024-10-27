@@ -51,7 +51,7 @@ function FavouritesList() {
     <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">Favourites</h2>
 
-      {favourites.length > 0 ? (
+    
         <ul className="list-disc pl-5">
           {favourites.map((note, index) => (
             <li key={index} className="mb-2">
@@ -64,9 +64,6 @@ function FavouritesList() {
             </li>
           ))}
         </ul>
-      ) : (
-        <p>No favourite notes available.</p>
-      )}
 
       <Outlet />
     </div>
