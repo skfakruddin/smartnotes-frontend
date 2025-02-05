@@ -1,29 +1,108 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  return (
-    <div className='w-4/12 ms-40 mb-20'>
-      <div className='  mx-10 rounded-b-lg'>
-        <p className='text-center py-3 bg-[#41b3a2] xl:text-3xl text-white font-semibold rounded-t-lg'>Login</p>
-      <form className='bg-[#f5f5f5] px-4  pb-10 rounded-b-lg'>
-        <div className='py-5' >
-          <label htmlFor="username" className='block text-xl font-bold mt-2'>UserName:</label>
-          <input type="text" className='w-full  py-4 border border-black rounded-md bg-[#d7eae8] mt-3 ' />
-        </div>
-       
-        <div className='py-2'>
-          <label htmlFor="password" className='block font-bold text-xl'>Password:</label>
-          <input type="password" className='w-full py-4 border border-black rounded-md bg-[#d7eae8] mt-3' />
-        </div>
-   
-        <div>
-          <button className='px-5 py-2 xl:text-2xl mt-8  bg-[#d7eae8] border border-black rounded-lg ms-32 font-bold'>Confirm</button>
-        </div>
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
-      </form>
+  // Handle input changes
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  // Handle form submission
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Sending the data to the backend
+      const response = await fetch(
+        "https://smartnotes-backend.vercel.app/user-api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      // Handling the response
+      const data = await response.json();
+
+      if (response.ok) {
+        // Save token and username in localStorage upon successful login
+        localStorage.setItem("token", data.token); // Store the token
+        localStorage.setItem("username", data.username); // Ensure `data.username` is correct
+        navigate("/profile"); // Navigate to the profile page
+      } else {
+        alert(`Login failed: ${data.message}`);
+      }
+    } catch (error) {
+      alert("An error occurred during login.");
+    }
+  };
+
+  return (
+    <div className="w-96 mb-10 pt-12">
+      <div className="w-full mx-4 bg-white shadow-lg rounded-lg overflow-hidden">
+        <p className="text-center py-4 bg-[#41b3a2] text-2xl text-white font-semibold">
+          Login
+        </p>
+        <form className="p-6" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="username"
+              className="block text-lg font-bold text-gray-700 mb-2"
+            >
+              UserName:
+            </label>
+            <input
+              type="text"
+              id="username"
+              value={formData.username}
+              onChange={handleChange}
+              className="w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41b3a2] focus:border-transparent"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-lg font-bold text-gray-700 mb-2"
+            >
+              Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41b3a2] focus:border-transparent"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div className="text-center">
+            <button
+              type="submit"
+              className="px-6 py-3 bg-[#41b3a2] text-white font-semibold rounded-md shadow-md hover:bg-[#33a89f] transition duration-300"
+            >
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

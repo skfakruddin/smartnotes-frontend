@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Add to your index.css or equivalent */
+.kbar {
+    @apply absolute top-0 left-0 w-full h-full bg-white z-50 shadow-lg;
+  }
+  
