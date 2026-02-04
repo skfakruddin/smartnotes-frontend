@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-// Quill modules and formats
 const modules = {
   toolbar: {
     container: [
@@ -16,12 +15,11 @@ const modules = {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image"], // Added image button
-      [{ color: [] }, { background: [] }], // Added background color
-      ["clean"],
+      ["link", "image"], 
+      [{ color: [] }, { background: [] }], 
     ],
     handlers: {
-      image: handleImageUpload, // Custom handler for image upload
+      image: handleImageUpload,
     },
   },
 };
@@ -128,7 +126,7 @@ function NoteDetail() {
         } catch (error) {
           console.error("Error auto-saving note:", error);
         }
-      }, 1000); // Delay of 1 second
+      }, 1000); 
 
       autoSaveNote();
     }
@@ -147,12 +145,12 @@ function NoteDetail() {
   };
 
   const handleSelectTag = (tag) => {
-    setTags([tag]); // Ensure only one tag is assigned
+    setTags([tag]); 
     setShowTagOptions(false);
   };
 
   const handleRemoveTag = () => {
-    setTags([]); // Remove current tag
+    setTags([]); 
   };
 
   const handleToggleFavourite = async () => {
