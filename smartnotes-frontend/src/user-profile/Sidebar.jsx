@@ -7,8 +7,8 @@ import tagicon from "../assets/tagicon.svg";
 import notesicon from "../assets/notesicon.svg";
 import trashicon from "../assets/trashicon.svg";
 import SearchBar from "./SearchBar";
-import { FaEllipsisV } from "react-icons/fa"; // Three dots icon
-import { MdKeyboardArrowDown } from "react-icons/md"; // Down arrow icon
+import { FaEllipsisV } from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md"; 
 import Home from "./Home";
 
 function Sidebar() {
@@ -54,7 +54,7 @@ function Sidebar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/"; // Redirect to login page or home page
+    window.location.href = "/"; 
   };
 
   const handleConfirmLogout = () => {
@@ -195,7 +195,7 @@ function Sidebar() {
         if (notesResponse.ok) {
           const notesData = await notesResponse.json();
           setNotes(notesData);
-          setFilteredNotes(notesData); // Initialize filteredNotes with all notes
+          setFilteredNotes(notesData); 
         } else {
           console.error("Failed to fetch notes");
         }
