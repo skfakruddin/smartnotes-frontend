@@ -44,7 +44,6 @@ const formats = [
   "color",
   "background",
 ];
-// Debounce utility function
 const debounce = (func, delay) => {
   let timeoutId;
   return (...args) => {
@@ -128,7 +127,7 @@ function NoteDetail() {
         } catch (error) {
           console.error("Error auto-saving note:", error);
         }
-      }, 1000); // Delay of 1 second
+      }, 1000); 
 
       autoSaveNote();
     }
@@ -147,12 +146,12 @@ function NoteDetail() {
   };
 
   const handleSelectTag = (tag) => {
-    setTags([tag]); // Ensure only one tag is assigned
+    setTags([tag]); 
     setShowTagOptions(false);
   };
 
   const handleRemoveTag = () => {
-    setTags([]); // Remove current tag
+    setTags([]); 
   };
 
   const handleToggleFavourite = async () => {
@@ -206,7 +205,7 @@ function NoteDetail() {
 
   const handlePasswordSubmit = async () => {
     try {
-      // Fetch the stored notes password from the backend
+
       const userResponse = await fetch(
         "https://smartnotes-backend.vercel.app/user-api/users/profile",
         {
@@ -224,9 +223,7 @@ function NoteDetail() {
         return;
       }
 
-      console.log("Fetched notesPassword:", userData.notesPassword); // Debug log
-
-      // Compare the entered password with the stored notes password
+      console.log("Fetched notesPassword:", userData.notesPassword); 
       const isPasswordMatch = await fetch(
         "https://smartnotes-backend.vercel.app/user-api/users/notes/verify-password",
         {
@@ -243,7 +240,7 @@ function NoteDetail() {
       );
       const result = await isPasswordMatch.json();
 
-      console.log("Password verification result:", result); // Debug log
+      console.log("Password verification result:", result); 
 
       if (result.success) {
         setIsLocked(false);
