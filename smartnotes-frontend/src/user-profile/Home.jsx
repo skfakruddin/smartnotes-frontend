@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import rightArrow from "../assets/disabled-right.svg";
 import leftArrow from "../assets/disabled-left.svg";
 
@@ -10,7 +10,7 @@ const RecentNotes = () => {
   const scrollRef = useRef(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecentNotes = async () => {
@@ -49,14 +49,14 @@ const RecentNotes = () => {
         const scrollWidthValue =
           scrollElement.scrollWidth - scrollElement.clientWidth;
 
-        setAtStart(scrollLeftValue === 0); // Reached start
-        setAtEnd(scrollLeftValue >= scrollWidthValue); // Reached end
+        setAtStart(scrollLeftValue === 0); 
+        setAtEnd(scrollLeftValue >= scrollWidthValue);
       }
     };
 
     if (scrollElement) {
       scrollElement.addEventListener("scroll", handleScroll);
-      handleScroll(); // Initial check
+      handleScroll();
     }
 
     return () => {
@@ -78,9 +78,8 @@ const RecentNotes = () => {
     }
   };
 
-  // Function to handle note click
   const handleNoteClick = (noteId) => {
-    navigate(`/profile/notes/${noteId}`); // Navigate to the note detail page
+    navigate(`/profile/notes/${noteId}`);
   };
 
   return (
@@ -97,7 +96,7 @@ const RecentNotes = () => {
               <div
                 key={note.noteId}
                 className="flex flex-col w-60 h-52 p-6 rounded-xl pb-4 sm:pe-4 bg-[#bfeae7]  hover:scale-[1.07] transition-all cursor-pointer  hover:bg-[#8ddfd8]"
-                onClick={() => handleNoteClick(note.noteId)} // Attach click handler
+                onClick={() => handleNoteClick(note.noteId)} 
               >
                 <h2 className="text-2xl font-semibold mb-2">{note.title}</h2>
                 <p className="text-md">
