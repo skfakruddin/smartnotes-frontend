@@ -7,20 +7,14 @@ function Login() {
     username: "",
     password: "",
   });
-
-  // Handle input changes
   const handleChange = (event) => {
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
   };
-
-  // Handle form submission
-  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Sending the data to the backend
       const response = await fetch(
         "https://smartnotes-backend.vercel.app/user-api/users/login",
         {
@@ -32,14 +26,12 @@ function Login() {
         }
       );
 
-      // Handling the response
       const data = await response.json();
 
       if (response.ok) {
-        // Save token and username in localStorage upon successful login
-        localStorage.setItem("token", data.token); // Store the token
-        localStorage.setItem("username", data.username); // Ensure `data.username` is correct
-        navigate("/profile"); // Navigate to the profile page
+        localStorage.setItem("token", data.token); 
+        localStorage.setItem("username", data.username); 
+        navigate("/profile"); 
       } else {
         alert(`Login failed: ${data.message}`);
       }
