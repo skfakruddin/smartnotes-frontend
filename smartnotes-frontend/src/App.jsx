@@ -1,4 +1,3 @@
-// App.jsx
 import React from "react";
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Main from './components/main/Main';
@@ -12,7 +11,7 @@ import Login from './components/login/Login';
 import SignUp from './components/signup/SignUp';
 import Tags from "./user-profile/Tags";
 import Trash from "./user-profile/Trash";
-import SearchBar from "./user-profile/SearchBar";  // Assuming SearchBar needs to be integrated into the profile pages
+import SearchBar from "./user-profile/SearchBar";  
 
 function App() {  
   const browserRouter = createBrowserRouter([
@@ -24,25 +23,25 @@ function App() {
       path: "/profile",
       element: <ProfileLayout />,
       children: [
-        { path: "", element: <Home /> },  // Redirect to home
+        { path: "", element: <Home /> },  
         { path: "home", element: <Home /> },
-        { path: "search", element: <SearchBar /> },  // Search page
+        { path: "search", element: <SearchBar /> },  
         { 
           path: "favourites", 
           element: <FavouritesList />,
           children: [
-            { path: ":noteId", element: <FavNoteDetail /> },  // Show note details within favourites
+            { path: ":noteId", element: <FavNoteDetail /> },  
           ],
         },
         { 
           path: "notes", 
           element: <Notes />,
           children: [
-            { path: ":noteId", element: <NoteDetail /> },  // Dynamic note detail
+            { path: ":noteId", element: <NoteDetail /> },  
           ],
         },
         { path: "tags", element: <Tags /> },
-        { path: "trash", element: <Trash /> },  // Trash page
+        { path: "trash", element: <Trash /> },  
       ],
     },
     {
