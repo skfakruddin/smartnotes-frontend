@@ -6,7 +6,7 @@ const SearchModal = () => {
   const [actions, setActions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate(); // To navigate to note content
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -25,7 +25,7 @@ const SearchModal = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched data:", data); // Log the fetched data to check structure
+        console.log("Fetched data:", data); 
         if (Array.isArray(data)) {
           setActions(data);
         }
@@ -61,9 +61,9 @@ const SearchModal = () => {
             {filteredActions.length > 0 ? (
               filteredActions.map((note) => (
                 <div
-                  key={note.noteId} // Use the correct key
+                  key={note.noteId} 
                   style={resultItemStyles}
-                  onClick={() => navigate(`/profile/notes/${note.noteId}`)} // Navigate using correct noteId
+                  onClick={() => navigate(`/profile/notes/${note.noteId}`)} 
                 >
                   {note.title}
                 </div>
@@ -84,8 +84,6 @@ const SearchModal = () => {
     </>
   );
 };
-
-// Updated styles
 const buttonStyles = {
   padding: "10px 20px",
 
@@ -104,7 +102,7 @@ const modalStyles = {
   borderRadius: "8px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   width: "400px",
-  zIndex: 1000, // Added z-index for the modal
+  zIndex: 1000,
 };
 
 const searchInputStyles = {
@@ -118,17 +116,15 @@ const searchInputStyles = {
 const resultsContainerStyles = {
   maxHeight: "200px",
   overflowY: "auto",
-  scrollbarWidth: "none", // For Firefox
-  msOverflowStyle: "none", // For Internet Explorer and Edge
+  scrollbarWidth: "none", 
+  msOverflowStyle: "none",
 };
 
 const resultItemStyles = {
   padding: "10px",
-  // Removed the border from the notes
   cursor: "pointer",
 };
 
-// Hide scrollbar for WebKit browsers (Chrome, Safari)
 resultsContainerStyles["::-webkit-scrollbar"] = {
   display: "none",
 };
