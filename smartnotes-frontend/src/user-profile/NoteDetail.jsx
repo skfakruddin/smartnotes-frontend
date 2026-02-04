@@ -4,10 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import ImageResize from "quill-image-resize-module-react";
 
-// Register the ImageResize module with Quill
 Quill.register("modules/imageResize", ImageResize);
 
-// Define Quill modules and formats
 const modules = {
   toolbar: {
     container: [
@@ -20,8 +18,8 @@ const modules = {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image"], // Includes image button
-      [{ color: [] }, { background: [] }], // Includes background color options
+      ["link", "image"],
+      [{ color: [] }, { background: [] }], 
       ["clean"],
     ],
   },
@@ -153,12 +151,12 @@ function NoteDetail() {
   };
 
   const handleSelectTag = (tag) => {
-    setTags([tag]); // Ensure only one tag is assigned
+    setTags([tag]);
     setShowTagOptions(false);
   };
 
   const handleRemoveTag = () => {
-    setTags([]); // Remove current tag
+    setTags([]); 
   };
 
   const handleToggleFavourite = async () => {
@@ -176,10 +174,8 @@ function NoteDetail() {
       );
 
       if (response.ok) {
-        // Toggle the favourite status in the local state
         setIsFavourite(!isFavourite);
 
-        // Re-fetch the list of favourite notes after updating the status
         fetchFavouriteNotes();
 
         const action = isFavourite ? "removed from" : "added to";
