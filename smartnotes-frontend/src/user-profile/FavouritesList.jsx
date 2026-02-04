@@ -1,4 +1,3 @@
-// FavouritesList.js
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
@@ -17,7 +16,6 @@ function FavouritesList() {
           }
         );
 
-        // Check if the response is okay
         if (!response.ok) {
           console.error(
             "Failed to fetch favourites:",
@@ -34,10 +32,8 @@ function FavouritesList() {
 
         const data = await response.json();
 
-        // Debugging to see what data is returned
         console.log("Fetched favourites:", data);
 
-        // Set favourites if data.notes exists, else log a message
         setFavourites(data.notes || []);
       } catch (error) {
         console.error("Error fetching favourites:", error);
