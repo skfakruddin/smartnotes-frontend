@@ -17,14 +17,13 @@ const modules = {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image"], // Includes image button
-      [{ color: [] }, { background: [] }], // Includes background color options
+      ["link", "image"], 
+      [{ color: [] }, { background: [] }],
       ["clean"],
     ],
   },
   imageResize: {
-    // Enable the ImageResize module
-    modules: ["Resize", "DisplaySize", "Toolbar"], // Specify which features to enable
+    modules: ["Resize", "DisplaySize", "Toolbar"], 
   },
 };
 const formats = [
@@ -44,7 +43,6 @@ const formats = [
   "color",
   "background",
 ];
-// Debounce utility function
 const debounce = (func, delay) => {
   let timeoutId;
   return (...args) => {
@@ -124,8 +122,7 @@ function FavNoteDetail() {
       } catch (error) {
         console.error("Error auto-saving note:", error);
       }
-    }, 1000); // Delay of 1 second
-
+    }, 1000); 
     autoSaveNote();
   }, [noteText, noteTitle, tags, isFavourite, isLocked, noteId]);
 
@@ -142,12 +139,12 @@ function FavNoteDetail() {
   };
 
   const handleSelectTag = (tag) => {
-    setTags([tag]); // Ensure only one tag is assigned
+    setTags([tag]);
     setShowTagOptions(false);
   };
 
   const handleRemoveTag = () => {
-    setTags([]); // Remove current tag
+    setTags([]); 
   };
 
   const handleToggleFavourite = async () => {
