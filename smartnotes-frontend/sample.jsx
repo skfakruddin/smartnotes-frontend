@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import ImageResize from "quill-image-resize-module-react"; // Import the ImageResize module
+import ImageResize from "quill-image-resize-module-react"; 
 Quill.register("modules/imageResize", ImageResize);
 
-// Quill modules and formats
 const modules = {
   toolbar: {
     container: [
@@ -18,13 +17,13 @@ const modules = {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image"], // Added image button
-      [{ color: [] }, { background: [] }], // Added background color
+      ["link", "image"],
+      [{ color: [] }, { background: [] }], 
       ["clean"],
     ],
   },
   ImageResize: {
-    modules: ["Resize", "DisplaySize", "Toolbar"], // Allows resizing and other image controls
+    modules: ["Resize", "DisplaySize", "Toolbar"], 
   },
 };
 
