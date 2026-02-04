@@ -1,16 +1,13 @@
-// Tags.jsx
 import React, { useEffect, useState } from "react";
-import TagsDropdown from "./TagsDropDown";  // Ensure the correct path
-
+import TagsDropdown from "./TagsDropDown";  
 const Tags = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    // Fetch notes from backend or use your existing state management
     const fetchNotes = async () => {
       try {
-        const response = await getNotes();  // Fetch notes from backend
-        setNotes(response.data);  // Adjust based on your response structure
+        const response = await getNotes();  
+        setNotes(response.data);  
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
