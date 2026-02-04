@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUp({ setShowForm }) {
-  // console.log('setShowForm: ', setShowForm);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -12,24 +11,20 @@ function SignUp({ setShowForm }) {
     confirmNotesPassword: "",
   });
 
-  // Handle input changes
   const handleChange = (event) => {
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
   };
 
-  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Check if notes passwords match
     if (formData.notesPassword !== formData.confirmNotesPassword) {
       alert("Notes password and confirmation do not match.");
       return;
     }
 
     try {
-      // Sending the data to the backend
       const response = await fetch(
         "https://smartnotes-backend.vercel.app/user-api/users",
         {
@@ -41,12 +36,9 @@ function SignUp({ setShowForm }) {
         }
       );
 
-      // Handling the response
       const data = await response.json();
 
       if (response.ok) {
-        // Navigate to login page after successful signup
-        // navigate("/login");
         setShowForm("login");
         alert("Signup successful!");
       } else {
